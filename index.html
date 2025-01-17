@@ -15,17 +15,16 @@
     padding: 0;
 }
 #header {
-    background-color: #333;
+    background-color: #3b3b3b;
     color: #fff;
     padding: 20px;
     text-align: center;
     box-shadow: 0 0 0 20px firebrick, 0px 30px 50px 13px rgba(0,0,0,0.21);
-    outline: dashed 20px whitesmoke;
+    outline: dashed 20px rgb(238, 225, 217);
 }
 #content {
     width: 800px;
     margin: 20px auto;
-    background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.21);
@@ -48,7 +47,7 @@
     padding: 0px 24px 0px 0px;
 }
 #footer {
-    background-color: #333;
+    background-color: #3b3b3b;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -56,7 +55,7 @@
     width: 100%;
     bottom: 0;
     box-shadow: 0 0 0 20px firebrick, 0px -10px 50px 13px rgba(0,0,0,0.21);
-    outline: dashed 20px whitesmoke;
+    outline: dashed 20px rgb(238, 225, 217);
 }
 ul{
     padding-left: 0;
@@ -64,9 +63,9 @@ ul{
 </style>
 <body>
     <div id="header">
-        <h1>TNM108: Formula One Recommender System </h1>
+        <i><h1>TNM108: Formula One Recommender System </h1></i>
     </div>
-    <div id="content" style="margin-top: 40px;">
+    <div id="content" style="margin-top: 40px; background: linear-gradient(-135deg,#942222 40px,#fff 0);">
         <div class="post">
             <h2>Link to code</h2>
             <ul>
@@ -75,7 +74,7 @@ ul{
             </ul>
         </div>
     </div>
-    <div id="content">
+    <div id="content" style="background: linear-gradient(-135deg,#862424 40px,#fff 0);">
         <div class="post">
             <h2>Background</h2>
             <p>The goal of this project is to explore the posibility of creating a system that can recommend suitible Formula One races to watch for individuals or a group of people. A system like this would allow
@@ -90,14 +89,14 @@ ul{
             </p>
         </div>
     </div>
-    <div id="content">
+    <div id="content" style="background: linear-gradient(-135deg,#732626 40px,#fff 0);">
         <div class="post">
             <h2>Reasearch Question</h2>
             <p>
             </p>
         </div>
     </div>
-    <div id="content">
+    <div id="content" style="background: linear-gradient(-135deg,#612828 40px,#fff 0);">
         <div class="post">
             <h2>Dataset</h2>
             <div class="twoCol">
@@ -161,8 +160,8 @@ ul{
             </div>
         </div>
     </div>
-    <div id="content">
-        <div class="post" style="display: grid;">
+    <div id="content" style="background: linear-gradient(-135deg,#4e2b2b 40px,#fff 0);">
+        <div class="post">
             <h2>Users</h2>
             <p> As mentioned in the background section, the recommended races is based on the users preferences. Each user is defined as a profile containing their favorite driver, constructor, curcuit, and grand prix. In the current implementation the diffrent user
                 profiles are hard coded and can only be changed by going through the code. Preferably this would be improved so that the user can enter these parameters through the console or in an interface. The profiles only take the name of the drivers, constructors,
@@ -175,7 +174,7 @@ ul{
             <p style="justify-self: center;"><img src="images/profileComparison.png" alt="profileComparison" width="512px"></p>
         </div>
     </div>
-    <div id="content">
+    <div id="content" style="background: linear-gradient(-135deg,#2f2f2f 40px,#fff 0);">
         <div class="post">
             <h2>Implementation 1 - Euclidian distance</h2>
             <p> bla
