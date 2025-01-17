@@ -157,10 +157,17 @@ ul{
         </div>
     </div>
     <div id="content">
-        <div class="post">
+        <div class="post" style="display: grid;">
             <h2>Users</h2>
-            <p> blahablaha
+            <p> As mentioned in the background section, the recommended races is based on the users preferences. Each user is defined as a profile containing their favorite driver, constructor, curcuit, and grand prix. In the current implementation the diffrent user
+                profiles are hard coded and can only be changed by going through the code. Preferably this would be improved so that the user can enter these parameters through the console or in an interface. The profiles only take the name of the drivers, constructors,
+                 and circuits while the favorite grand prix parameter takes both the year and the name of the grand prix. The inital parameters of the user profiles are then used to create expanded profiles with relevant information from the entire dataset. Firstly the 
+                 name of the driver is used to search the <i>forename</i> and <i>surname</i> columns in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a>, when the specific driver is found, their
+                 <i>driverId</i> and date of birth is saved. The favorite constructor, circuit, and grand prix is also searched for in  <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>,
+                 <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/circuits.csv">circuits.csv</a>, and <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a>
+                 respectivley. The most important part of these searches is to find the diffrent IDs but the countries for both the constructors and circuits are also saved. In the figure below the comparison between an input profile and it's expanded counterpart is visualized.
             </p>
+            <p style="justify-self: center;"><img src="images/profileComparison.png" alt="profileComparison" width="512px"></p>
         </div>
     </div>
     <div id="content">
