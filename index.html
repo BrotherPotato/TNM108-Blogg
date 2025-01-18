@@ -164,18 +164,33 @@ ul{
         <div class="post">
             <h2>Users</h2>
             <p> As mentioned in the background section, the recommended races is based on the users preferences. Each user is defined as a profile containing their favorite driver, constructor, curcuit, and grand prix. In the current implementation the diffrent user
-                profiles are hard coded and can only be changed by going through the code. Preferably this would be improved so that the user can enter these parameters through the console or in an interface. The profiles only take the name of the drivers, constructors,
-                 and circuits while the favorite grand prix parameter takes both the year and the name of the grand prix. The inital parameters of the user profiles are then used to create expanded profiles with relevant information from the entire dataset. Firstly the 
-                 name of the driver is used to search the <i>forename</i> and <i>surname</i> columns in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a>, when the specific driver is found, their
-                 <i>driverId</i> and date of birth is saved. The favorite constructor, circuit, and grand prix is also searched for in  <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>,
-                 <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/circuits.csv">circuits.csv</a>, and <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a>
-                 respectivley. The most important part of these searches is to find the diffrent IDs but the countries for both the constructors and circuits are also saved. In the figure below the comparison between an input profile and it's expanded counterpart is visualized.
+                profiles are hard coded and can only be changed by going through the code. Preferably this would be improved so that the user can enter these parameters through the console or in an interface.
+                <br/>
+                <br/>
+                The profiles only take the name of the drivers, constructors, and circuits while the favorite grand prix parameter takes both the year and the name of the grand prix. The inital parameters of the user profiles are then used to create expanded profiles with relevant information from the entire dataset. Firstly the 
+                name of the driver is used to search the <i>forename</i> and <i>surname</i> columns in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a>, when the specific driver is found, their
+                <i>driverId</i> and date of birth is saved. The favorite constructor, circuit, and grand prix is also searched for in  <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>,
+                <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/circuits.csv">circuits.csv</a>, and <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a>
+                respectivley. The most important part of these searches is to find the diffrent IDs but the countries for both the constructors and circuits are also saved. In the figure below the comparison between an input profile and it's expanded counterpart is visualized.
             </p>
             <p style="justify-self: center;"><img src="images/profileComparison.png" alt="profileComparison" width="512px"></p>
         </div>
     </div>
     <div id="content" style="background: linear-gradient(-135deg,#2f2f2f 40px,#fff 0);">
         <div class="post">
+            <h2>Predictions</h2>
+            <div class="twoCol">
+                <p> Two diffrent types of prediction methods were used for this system, them beign two euclidan distance implementations and a KNN implementation. These will be explained in the following sections, but it's first important to note which set of user profiles will be
+                    used. 
+                    <br/>
+                    <br/>
+                    In the image on the right hand side the imaginary group of users has defined their profiles as shown. From the selection of drivers and races it could speciulated that this might be a group of friends that are rather new to watching the sport and thus this system
+                    could work wonders to find them a race to watch together as mentioned in the background section. Given the more recent favorite races and only containing drivers which where still on the grid as of the 2024 season this should skew the prediction results towards the
+                    modern era of the sport.
+               </p>
+               <p><img src="images/userProfiles.png" alt="UserProfiles" width="312px"></p>
+            </div>
+
             <h2>Implementation 1 - Euclidian distance</h2>
             <p> bla
             </p>
