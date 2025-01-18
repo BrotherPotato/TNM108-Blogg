@@ -17,7 +17,8 @@
 #header {
     background-color: #3b3b3b;
     color: #fff;
-    padding: 20px;
+    padding: 20px 0 20px 0;
+    width:100%;
     text-align: center;
     box-shadow: 0 0 0 20px firebrick, 0px 30px 50px 13px rgba(0,0,0,0.21);
     outline: dashed 20px rgb(238, 225, 217);
@@ -180,7 +181,7 @@ ul{
         <div class="post">
             <h2>Predictions</h2>
             <div class="twoCol">
-                <p> Two diffrent types of prediction methods were used for this system, them beign two euclidan distance implementations and a KNN implementation. These will be explained in the following sections, but it's first important to note which set of user profiles will be
+                <p> Two diffrent types of prediction methods were used for this system, them beign two euclidian distance implementations and a KNN implementation. These will be explained in the following sections, but it's first important to note which set of user profiles will be
                     used. 
                     <br/>
                     <br/>
@@ -192,7 +193,36 @@ ul{
             </div>
 
             <h2>Implementation 1 - Euclidian distance</h2>
-            <p> bla
+            <div class="twoCol">
+                <p> As previously mentioned there are two diffrent implementations of the euclidian distance prediction, these being unweighted and weighted predictions. Both implementations relies on transforming the data into a two dimmensional representation, which is done by introducing
+                     the cosine similarity values which have been calculated for each grand prix. In this case the cosine similarities for the constructors and drivers are mapped to the x- and y-axes respectivley, thus giving each race it's own coordinate on a two dimmensional plane. A scatter plot of
+                     this representation can be seen on the right hand side.
+                </p>
+                <p><img src="images/driverconstPlot.png" alt="races scatter plot" width="398px"></p>
+            </div>
+            <div class="twoCol">
+                <p><img src="images/unweightedResult.png" alt="unweighted Result" width="312px"></p>
+                <p style="margin-left: 10px;"> The first implementation with an unweighted euclidan distance is rather simple as it only meassures the distance between each race and the users favorite races. This is done by selecting a race from the base dataset and meassuring how close it lies to all the favorite races in the user
+                    profiles. The combined distances meassured are then summed and the mean value is saved to the column <i>TotalDistance</i> in the base dataset. After all races have been evaluated for the given set of user profiles the base dataset is sorted according to the <i>TotalDistance</i> column
+                    and the resulting prediction for the user profiles listed in the start of this chapter can be seen in the image on the left hand side.
+                </p>
+            </div>
+            <p> As can be seen in the image the best prediction according to this implementation is the <i><a href="https://en.wikipedia.org/wiki/2022_Belgian_Grand_Prix">Belgian Grand Prix 2022</a></i>, which also happen to be one of the profiles favorite grand prix so thier contributing distance would thus be 0. The other users 
+                favorite races should of course also be analysed to make sure that this implementation works as expected. The coordinates of all users favorite races can be seen in the image below.
+            </p>
+            <p style="justify-self: center;"><img src="images/favoriteRaces.png" alt="favorite races" width="512px"></p>
+            <p> It can be seen in the image that the cosine similarity values for the driver order is very similar only having distances less than 0.1 to the recommended race. The cosine similarity for constructors are however a bit more spread out at a maximum distance of 0.3 to the recommended race. This values are however still
+                very small and thus it's resonable to say that the mean distance, <i>0.149917</i> to the recommended race is a good prediction to satisfy all users based only on their favorite races.
+            </p>
+            <div class="twoCol">
+                <p> This implementation can however be expanded to accomendate for more of the parameters in the user profiles and thus make more accurate predictions. To accomplish this there are wieghts introduced to the <i>TotalDistance</i> column as mentioned in the begining of this section. The two dimmensional distance meassurments
+                    remain the same in this implementation but a third axis is introduced which is used to apply weights based on the results of the profiles favorite drivers. The weight is dependant on how well a given driver did in a race which they partook in, meaning that drivers that finished high in the order are judged to have driven a better
+                    race. With the given user profiles in this example the resulting recommendations can be seen in the image on the right hand side.
+                </p>
+                <p style="margin-left: 10px;"><img src="images/weightedResults.png" alt="weighted Results" width="312px"></p>
+            </div>
+            <p> This predicton instead suggests that the imaginary group of friends should watch the <i><a href="https://en.wikipedia.org/wiki/2020_Portuguese_Grand_Prix">Portuguese Grand Prix 2020</a></i> which is very suitable as all the favorite drivers partook in this event and the entire podium is occupied by favorite drivers aswell.
+                Futhermore, it also had simmilar cosine similarities to those of the favorite races, these beign <i>0.7747</i> for the drivers and <i>0.3519</i> for the constructors and thus this also contributed to the recommendation of this grand prix.
             </p>
             <h2>Implementation 2 - KNN</h2>
             <p> blablablabla
