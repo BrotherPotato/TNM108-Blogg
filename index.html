@@ -103,7 +103,8 @@ ul{
         </div>
         <div class="post">
             <h2>PCA</h2>
-            <p>Principal Component Analysis (PCA) is a statistical technique used to emphasize variation and bring out strong patterns in a dataset. It is often used to make data easy to explore and visualize. PCA works by transforming the original variables into a new set of variables, the principal components, which are orthogonal and capture the maximum variance in the data.
+            <p>Principal Component Analysis (PCA) is a statistical technique used to emphasize variation and bring out strong patterns in a dataset. It is often used to make data easy to explore and visualize. 
+                PCA works by transforming the original variables into a new set of variables, the principal components, which are orthogonal and capture the maximum variance in the data.
             </p>
         </div>
     </div>
@@ -132,7 +133,7 @@ ul{
             </div>
             <p> The dataset also contains files which where unused in this project given that their data were deemed to not be important enough to make good predictions. These being for
                 example the two diffrent standings files which only indicates how the championship standing evolved during a season, thus not being relevant when watching races in a "one-off" manner. Lap times and pitstop
-                data was also exluded given the lack of data in them (about 300 races covered each). The seosons file was also kept unused as it only contains Wikipedia links to all 75 seasons, and the status file was
+                data was also exluded given the lack of data in them (about 300 races covered each). The seasons file was also kept unused as it only contains Wikipedia links to all 75 seasons, and the status file was
                 exluded for a similar reason given that it only contains data to indicate why a driver did not finish a race or how many laps down they were from the lead lap. Lastly the sprint results were exluded as sprints
                 only have been driven since 2021, thus containing a very small amount of data compared to the races.
             </p>
@@ -147,7 +148,7 @@ ul{
                 structure of <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a> can be seen in the image below.
             </p>
             <p><img src="images/racesStructure.png" alt="races.csv structure" width="100%"></p>
-            <p> As can be seen in the image it shows the entirety of the 2009 with raceIds from 1-17, futhermore, it's apparent that alot of the data is missing such as the time of the day when practice, qualifying, and sprint
+            <p> As can be seen in the image it shows the entirety of the 2009 with raceIds from 1-17, futhermore, it's apparent that a lot of the data is missing such as the time of the day when practice, qualifying, and sprint
                 started and what date they occurred on. These colums does lack this data for a large majority of the races as previously mentioned and are therefore immedietly dropped from the dataset as those won't be used. The
                 time of day the race was held on was also dropped as this value was unsused for this project.
             </p>
@@ -157,8 +158,8 @@ ul{
                 in a grand prix weekend into four diffrent vectors for each grand prix. The base dataset now contained the additional columns <i>driverQuali</i>, <i>constructorsQuali</i>,  <i>driversPosition</i>, and <i>constructorsPosition</i>.
             </p>
             <p> Given that these four new columns only contained numerical vectors it was decided that they could be used to generate two cosine similarities between the qualification order and the race result which could represent how 
-                exciting a race was. The argument for this was that if alot of changes happened during the grand prix the vectors would be less similar and thus contribute to a lower value for cosine similarity. With that the vectors in <i>driverQuali</i>
-                and <i>constructorsQuali</i> was compared to the vectors in  <i>driversPosition</i> and <i>constructorsPosition</i> respectivley for each grand prix ever held. This gave the values <i>driverCosim</i> and <i>constrCosim</i> which could be
+                exciting a race was. The argument for this was that if a lot of changes happened during the grand prix the vectors would be less similar and thus contribute to a lower value for cosine similarity. With that the vectors in <i>driverQuali</i>
+                and <i>constructorsQuali</i> was compared to the vectors in  <i>driversPosition</i> and <i>constructorsPosition</i> respectively for each grand prix ever held. This gave the values <i>driverCosim</i> and <i>constrCosim</i> which could be
                 added into two new separate columns in the base dataset. One important thing to note here is that there were some instances where a driver was injured during qualifying and thus couldn't partake in the race thus not beign present in the 
                 result vector. In these few cases those drivers where simply exluded from the qualifying vector to make sure that both vectors were the same length when the cosine similarity was calculated.
             </p>
@@ -171,7 +172,7 @@ ul{
                     In the image on the right hand side the data for the 2003 Italian Grand Prix can be seen. As is shown, the driver with <i>driverId</i> 30 took pole position and the win with the constructor with <i>constructorId</i> 6, which according to the 
                     files <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a> and <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>
                     is the classic line up of Michael Schumacher driving for Ferrari. Along with this it can be seen in the column <i>PodiumClimb</i> that he indeed neither gained or lost positions when comparing his qualification to race result (it should also be noted
-                    that this column does include all drivers and not only the podium finisher, the name is a left over from when the column only contained those three drivers). Laslty it can be seen that, given their closeness to 1, the driver and constructor cosine 
+                    that this column does include all drivers and not only the podium finisher, the name is a left over from when the column only contained those three drivers). Lastly it can be seen that, given their closeness to 1, the driver and constructor cosine 
                     similarities indicate that this might not have been the most eventful race to watch.
                 </p>
                 <p><img src="images/2003ITAGP.png" alt="2003 Italian GP" width="412px"></p>
@@ -181,13 +182,13 @@ ul{
     <div id="content" style="background: linear-gradient(-135deg,#4e2b2b 40px,#fff 0);">
         <div class="post">
             <h2>Users</h2>
-            <p> As mentioned in the background section, the recommended races is based on the users preferences. Each user is defined as a profile containing their favorite driver, constructor, curcuit, and grand prix. In the current implementation the diffrent user
+            <p> As mentioned in the background section, the recommended races is based on the users preferences. Each user is defined as a profile containing their favorite driver, constructor, circuit, and grand prix. In the current implementation the diffrent user
                 profiles are hard coded and can only be changed by going through the code. Preferably this would be improved so that the user can enter these parameters through the console or in an interface.
                 <br/>
                 <br/>
                 The profiles only take the name of the drivers, constructors, and circuits while the favorite grand prix parameter takes both the year and the name of the grand prix. The inital parameters of the user profiles are then used to create expanded profiles with relevant information from the entire dataset. Firstly the 
                 name of the driver is used to search the <i>forename</i> and <i>surname</i> columns in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a>, when the specific driver is found, their
-                <i>driverId</i> and date of birth is saved. The favorite constructor, circuit, and grand prix is also searched for in  <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>,
+                <i>driverId</i> and date of birth is saved. The favorite constructor, circuit, and grand prix is also searched for in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>,
                 <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/circuits.csv">circuits.csv</a>, and <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a>
                 respectivley. The most important part of these searches is to find the diffrent IDs but the countries for both the constructors and circuits are also saved. In the figure below the comparison between an input profile and it's expanded counterpart is visualized.
             </p>
@@ -198,11 +199,11 @@ ul{
         <div class="post">
             <h2>Predictions</h2>
             <div class="twoCol">
-                <p> Two diffrent types of prediction methods were used for this system, them beign two euclidian distance implementations and a KNN implementation. These will be explained in the following sections, but it's first important to note which set of user profiles will be
+                <p> Two diffrent types of prediction methods were used for this system, them being two euclidian distance implementations and a KNN implementation. These will be explained in the following sections, but it's first important to note which set of user profiles will be
                     used. 
                     <br/>
                     <br/>
-                    In the image on the right hand side the imaginary group of users has defined their profiles as shown. From the selection of drivers and races it could speciulated that this might be a group of friends that are rather new to watching the sport and thus this system
+                    In the image on the right hand side the imaginary group of users has defined their profiles as shown. From the selection of drivers and races it could speculated that this might be a group of friends that are rather new to watching the sport and thus this system
                     could work wonders to find them a race to watch together as mentioned in the background section. Given the more recent favorite races and only containing drivers which where still on the grid as of the 2024 season this should skew the prediction results towards the
                     modern era of the sport.
                </p>
@@ -231,8 +232,9 @@ ul{
             <p> It can be seen in the image that the cosine similarity values for the driver order is very similar only having distances less than 0.1 to the recommended race. The cosine similarity for constructors are however a bit more spread out at a maximum distance of 0.3 to the recommended race. This values are however still
                 very small and thus it's resonable to say that the mean distance, <i>0.149917</i> to the recommended race is a good prediction to satisfy all users based only on their favorite races.
             </p>
+            <h4 style="margin-bottom: 0;">Euclidian distance with weights</h4>
             <div class="twoCol">
-                <p> This implementation can however be expanded to accomendate for more of the parameters in the user profiles and thus make more accurate predictions. To accomplish this there are wieghts introduced to the <i>TotalDistance</i> column as mentioned in the begining of this section. The two dimmensional distance meassurments
+                <p style="margin-top: 0;"> This implementation can however be expanded to accomendate for more of the parameters in the user profiles and thus make more accurate predictions. To accomplish this there are weights introduced to the <i>TotalDistance</i> column as mentioned in the begining of this section. The two dimmensional distance meassurments
                     remain the same in this implementation but a third axis is introduced which is used to apply weights based on the results of the profiles favorite drivers. The weight is dependant on how well a given driver did in a race which they partook in, meaning that drivers that finished high in the order are judged to have driven a better
                     race. With the given user profiles in this example the resulting recommendations can be seen in the image on the right hand side.
                 </p>
