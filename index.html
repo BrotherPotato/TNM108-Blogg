@@ -115,7 +115,7 @@ ul{
             </p>
         </div>
     </div>
-    <div id="content" style="background: linear-gradient(-135deg,#612828 40px,#fff 0);">
+    <div id="content" style="background: linear-gradient(-135deg,#6d2727 40px,#fff 0);">
         <div class="post">
             <h2>Dataset</h2>
             <div class="twoCol">
@@ -179,7 +179,7 @@ ul{
             </div>
         </div>
     </div>
-    <div id="content" style="background: linear-gradient(-135deg,#4e2b2b 40px,#fff 0);">
+    <div id="content" style="background: linear-gradient(-135deg,#5c2929 40px,#fff 0);">
         <div class="post">
             <h2>Users</h2>
             <p> As mentioned in the background section, the recommended races is based on the users preferences. Each user is defined as a profile containing their favorite driver, constructor, circuit, and grand prix. In the current implementation the diffrent user
@@ -195,7 +195,7 @@ ul{
             <p style="justify-self: center;"><img src="images/profileComparison.png" alt="profileComparison" width="512px"></p>
         </div>
     </div>
-    <div id="content" style="background: linear-gradient(-135deg,#2f2f2f 40px,#fff 0);">
+    <div id="content" style="background: linear-gradient(-135deg,#4e2b2b 40px,#fff 0);">
         <div class="post">
             <h2>Predictions</h2>
             <div class="twoCol">
@@ -220,7 +220,7 @@ ul{
             </div>
             <div class="twoCol">
                 <p><img src="images/unweightedResult.png" alt="unweighted Result" width="312px"></p>
-                <p style="margin-left: 10px;"> The first implementation with an unweighted euclidan distance is rather simple as it only meassures the distance between each race and the users favorite races. This is done by selecting a race from the base dataset and meassuring how close it lies to all the favorite races in the user
+                <p style="margin-left: 10px;"> The first implementation with an unweighted euclidian distance is rather simple as it only meassures the distance between each race and the users favorite races. This is done by selecting a race from the base dataset and meassuring how close it lies to all the favorite races in the user
                     profiles. The combined distances meassured are then summed and the mean value is saved to the column <i>TotalDistance</i> in the base dataset. After all races have been evaluated for the given set of user profiles the base dataset is sorted according to the <i>TotalDistance</i> column
                     and the resulting prediction for the user profiles listed in the start of this chapter can be seen in the image on the left hand side.
                 </p>
@@ -244,7 +244,36 @@ ul{
                 Futhermore, it also had simmilar cosine similarities to those of the favorite races, these beign <i>0.7747</i> for the drivers and <i>0.3519</i> for the constructors and thus this also contributed to the recommendation of this grand prix.
             </p>
             <h2>Implementation 2 - KNN</h2>
-            <p> blablablabla
+            <p> The second method used in this system is a KNN based prediction. This implementation relies on the races beign classed to a specific value or classifier, which in this case was chosen to be how <i>intense</i> a given grand prix was. This intensity classifier is on the scale of 0-3 where the most exsiting races would gain the class 3
+                while the least exiting races would gain the class 0. The races are evaluated in a simmilar way as the weighted euclidian distance evaluation where the races that the favorite drivers performed better in gets a higher weight. The weight is summed for all favorite drivers so that races where they partake and do well in will get a higher
+                weight. Each race gets it's own weight and this is the value which decides how exiting or intense a grand prix was.
+            </p>
+            <p> Races where the weight remained 0 (for example if none of the drivers participated) are classed as zero and thus not exciting at all, races with a weight less than 10 are classed as one, races with a weight more than 10 but less than 30 are classed as two, while the most exciting races with the class three are those with a weight larger or equal to 30.
+                Thus there are four diffrent groups which a grand prix can be assigned to.
+            </p>
+            <div class="twoCol">
+                <p style="margin-left: 10px;"><img src="images/KNNplot.png" alt="KNN plot" width="312px"></p>
+                <p> With all races now having consine similarites as coordinates and diffrent classes, it's possible to introduce a new point which will get it's position based on the user profiles favorite races avrage cosine similarites. The class of the new point will be predicted based on the classes of it's
+                    five nearest neighbours. The result of adding a new point can be seen in the image on the left hand side. As can be seen in the image the new point based on the group of users get the excitment class of two.
+                </p>
+            </div>
+            <div class="twoCol">
+                <p> Lastly there needs to be a way to messure the closes races to the avrage favorite race from the user profiles. This is done in the same way as the weighted euclidian distance but only accounting for the races in the same class as the prediction, i.e in this case only races with the excitment 
+                    class two. The five best predicitons from this implementation can be seen in the image on the right hand side.
+                    <br/>
+                    <br/>
+                    As shown, the recommend race here is the <i><a href="https://en.wikipedia.org/wiki/2021_Azerbaijan_Grand_Prix">Azerbaijan Grand Prix 2021</a></i>, which did have many changes between qualifying and the race result, however, only one of the favorite drivers climed during the race and none of these drivers finsihed on the podium. It should be noted
+                    that this implementation is better at recommending races based on the excitment class more than how each users favorite driver performed.
+                </p>
+                <p style="margin-left: 10px;"><img src="images/KNNresults.png" alt="KNN Results" width="312px"></p>
+            </div>
+        </div>
+    </div>
+    <div id="content" style="background: linear-gradient(-135deg,#422d2d 40px,#fff 0);">
+        <div class="post">
+            <h2>Discussion</h2>
+            <p> There are some improvements which could contribute to better predictions by the system, for example, given that all the races have an associated Wikipedia link it would be possible to extract the written race reports for each race. These documents could then be vectorised to allow for <i>TF-IDF</i> meassurments which could further improve how races are classed and compared to one another.
+                An additional way the prediction could be improved is to utililise more of the data such as, lap times and the pitstop time to futher meassure how exciting a race was.
             </p>
         </div>
     </div>
