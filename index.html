@@ -262,8 +262,8 @@ ul{
                     class two. The five best predicitons from this implementation can be seen in the image on the right hand side.
                     <br/>
                     <br/>
-                    As shown, the recommend race here is the <i><a href="https://en.wikipedia.org/wiki/2021_Azerbaijan_Grand_Prix">Azerbaijan Grand Prix 2021</a></i>, which did have many changes between qualifying and the race result, however, only one of the favorite drivers climed during the race and none of these drivers finsihed on the podium. It should be noted
-                    that this implementation is better at recommending races based on the excitment class more than how each users favorite driver performed.
+                    As shown, the recommend race here is the <i><a href="https://en.wikipedia.org/wiki/2021_Styrian_Grand_Prix">Styrian Grand Prix 2021</a></i>, were three of the favourite drivers qualified in the top three and also ended there, one of the favorites did lose a single position but another gained six positions. Given that this race had the same exitement class
+                    as the predicted class of the users favourite race avrage and that a majoirty of their favourite drivers drove really well it seems like this is a good prediction.
                 </p>
                 <p style="margin-left: 10px;"><img src="images/KNNresults.png" alt="KNN Results" width="312px"></p>
             </div>
@@ -272,7 +272,8 @@ ul{
     <div id="content" style="background: linear-gradient(-135deg,#422d2d 40px,#fff 0);">
         <div class="post">
             <h2>Discussion</h2>
-            <p>
+            <p> All the diffrent predictions differ a lot given the result images in the previous chapter which could be usable when analysing how well the models perform. Only the <i>Hungarian Grand Prix 2022</i> is repeated which is fair given that the repetition happens in the two euclidian distance versions. It is of course important to note that there is no concrete answer if these predictions are good or bad given
+                that diffrent people enjoy races for diffrent reasons so more testing would be needed with a real group of participants. The caveat here being that each race is about two hours long so going through each and every prediction for a large set of diffrent groups would be rather time consuming, but it would help to fine tune the models to give more accurate predictions.
             </p>
             <p> There are some improvements which could contribute to better predictions by the system, for example, given that all the races have an associated Wikipedia link it would be possible to extract the written race reports for each race. These documents could then be vectorised to allow for <i>TF-IDF</i> meassurments which could further improve how races are classed and compared to one another.
                 An additional way the prediction could be improved is to utililise more of the data such as, lap times and the pitstop time to futher meassure how exciting a race was. Futher accuracy could also be achieved by using all user profile parameters in the weighted methods, the favourite constructor is easy to accomendate given that it works simmilarly to the favourite driver parameter. It would be harder
