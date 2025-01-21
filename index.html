@@ -98,7 +98,8 @@ ul{
             <p>The goal of this project is to explore the posibility of creating a system that can recommend suitible Formula One races to watch for individuals or a group of people. A system like this would allow
                 for fans of Formula One to easier find races to watch or for groups of friends to find races which would suit everyone the best. The prediction should be based on the users favorite drivers, constructors,
                 circuits and, races to get more accurate predictions. A system like this does require large amounts of data to be accurate and thus a requirment for this project is to find a suitible dataset which holds
-                information about all 1125 races in the history of Formula One (as of the end of the 2024 season).
+                information about all 1125 races in the history of Formula One (as of the end of the 2024 season). To make comparisons between diffrent predictons possible two diffrent prediction methods are used,
+                these beign euclidian distance and KNN.
             </p>
         </div>
         <div class="post">
@@ -138,9 +139,6 @@ ul{
                 only have been driven since 2021, thus containing a very small amount of data compared to the races.
             </p>
             <p><a href="https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020">Link to dataset</a></p>
-            <h2>Training & Test data</h2>
-            <p> bla
-            </p>
             <h2>Data preprocessing</h2>
             <p> As can be seen in the image of the csv files, they are rather split up and it could be more efficent to work with one large file containing data from several parts of diffrent files. To do this it was chosen to
                 use the file <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a> as a base for a new and expanded dataset. This base file contains
@@ -177,6 +175,9 @@ ul{
                 </p>
                 <p><img src="images/2003ITAGP.png" alt="2003 Italian GP" width="412px"></p>
             </div>
+            <h2>Training & Test data</h2>
+            <p> Even though this system doesn't split up the data set in specific training and test data it could be argued that the base data set is a training set and the user profiles is a test dataset. This definition is for the KNN method given that this is a supervised learning method.
+            </p>
         </div>
     </div>
     <div id="content" style="background: linear-gradient(-135deg,#5c2929 40px,#fff 0);">
@@ -199,7 +200,7 @@ ul{
         <div class="post">
             <h2>Predictions</h2>
             <div class="twoCol">
-                <p> Two diffrent types of prediction methods were used for this system, them being two euclidian distance implementations and a KNN implementation. These will be explained in the following sections, but it's first important to note which set of user profiles will be
+                <p> Two diffrent types of prediction methods were used for this system, them being two euclidian distance implementations and a KNN implementation as mentioned in the background. These will be explained in the following sections, but it's first important to note which set of user profiles will be
                     used. 
                     <br/>
                     <br/>
