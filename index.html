@@ -95,22 +95,22 @@ ul{
     <div id="content" style="background: linear-gradient(-135deg,#862424 40px,#fff 0);">
         <div class="post">
             <h2>Background</h2>
-            <p>The goal of this project is to explore the posibility of creating a system that can recommend suitible Formula One races to watch for individuals or a group of people. A system like this would allow
-                for fans of Formula One to easier find races to watch or for groups of friends to find races which would suit everyone the best. The prediction should be based on the users favorite drivers, constructors,
-                circuits and, races to get more accurate predictions. A system like this does require large amounts of data to be accurate and thus a requirment for this project is to find a suitible dataset which holds
-                information about all 1125 races in the history of Formula One (as of the end of the 2024 season). To make comparisons between diffrent predictons possible two diffrent prediction methods are used,
-                these beign euclidian distance and KNN.
+            <p>This project explores the possibility of creating a system that can recommend suitable Formula One races to watch for individuals or a group of people. A system like this would allow
+                for fans of Formula One to find races to watch or for groups of friends to find races that would suit everyone the best. The prediction should be based on the users' favourite drivers, constructors,
+                circuits and, races to get more accurate predictions. A system like this does require large amounts of data to be accurate and thus a requirement for this project is to find a suitable dataset which holds
+                information about all 1125 races in the history of Formula One (as of the end of the 2024 season). To make comparisons between different predictions possible two different prediction methods are used,
+                these being Euclidian distance and KNN.
             </p>
         </div>
     </div>
     <div id="content" style="background: linear-gradient(-135deg,#732626 40px,#fff 0);">
         <div class="post">
             <h2>Reasearch Question</h2>
-            <p> Two research questions were established which would help with the development and structure of the system and result, respectively. The questions used goes as following:
+            <p> Two research questions were established which would help with the development and structure of the system and result, respectively. The questions used goes as follows:
             </p>
             <ul>
-                <li>Can a set of user profiles be used to recommend races?</li>
-                <li>Is it possible to determine if recommendations are good, given the subjective nature of race enjoyment?</li>
+                <li>How effective are user profiles in predicting and recommending suitable races for individuals?</li>
+                <li>What metrics or methods can be used to assess the quality of race recommendations despite the subjective nature of enjoyment?</li>
             </ul>
         </div>
     </div>
@@ -119,21 +119,21 @@ ul{
             <h2>Dataset</h2>
             <div class="twoCol">
                 <p> This system utilises the dataset "Formula 1 World Championship (1950 - 2024)" by Vopani on Kaggle which is linked below. As mentioned in the title of the dataset it contains every grand prix from 1950
-                    and forwards with data about the circuits that have been used as venues, the drivers and consturctors that have competed in the championship, and qualification and race results. All the csv files that
+                    and forwards with data about the circuits that have been used as venues, the drivers and consturctors that have competed in the championship, and qualification and race results. All the CSV files that
                     make up the dataset can be seen in the image on the right.
                     <br/>
                     <br/>
                     There are some drawbacks with this dataset however, for a start it does not have the qualification or race results for the second half of the 2024 season given that it hasn't been updated for six months
-                    (as of 2025-01-15). This of course mean that the system cannot account for some of the most recent results in the championship. Furthermore, the order which the drivers and consturcotrs finished during
-                    the qualification and race is missing from some of the races that happaned about 40 years ago. This means that these races can't be used for prediction, but a large majority of races are available and
+                    (as of 2025-01-15). This of course mean that the system cannot account for some of the most recent results in the championship. Furthermore, the order in which the drivers and constructors finished during
+                    the qualification and race is missing from some of the races that happened about 40 years ago. This means that these races can't be used for prediction, but a large majority of races are available and
                     the dataset is therefore usable.
                 </p>
                 <p><img src="images/csv_files.png" alt="csv file list" height="256" style="margin-left: 24px;"></p>
             </div>
-            <p> The dataset also contains files which where unused in this project given that their data were deemed to not be important enough to make good predictions. These being for
+            <p> The dataset also contains files which where unused in this project given that their data were deemed to not be important enough to make good predictions. These are for
                 example the two diffrent standings files which only indicates how the championship standing evolved during a season, thus not being relevant when watching races in a "one-off" manner. Lap times and pitstop
-                data was also exluded given the lack of data in them (about 300 races covered each). The seasons file was also kept unused as it only contains Wikipedia links to all 75 seasons, and the status file was
-                exluded for a similar reason given that it only contains data to indicate why a driver did not finish a race or how many laps down they were from the lead lap. Lastly the sprint results were exluded as sprints
+                data were also excluded given the lack of data in them (about 300 races covered each). The seasons file was also kept unused as it only contains Wikipedia links to all 75 seasons, and the status file was
+                excluded for a similar reason given that it only contains data to indicate why a driver did not finish a race or how many laps down they were from the lead lap. Lastly the sprint results were exluded as sprints
                 only have been driven since 2021, thus containing a very small amount of data compared to the races.
             </p>
             <p><a href="https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020">Link to dataset</a></p>
@@ -144,9 +144,9 @@ ul{
                 structure of <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a> can be seen in the image below.
             </p>
             <p><img src="images/racesStructure.png" alt="races.csv structure" width="100%"></p>
-            <p> As can be seen in the image it shows the entirety of the 2009 with raceIds from 1-17, futhermore, it's apparent that a lot of the data is missing such as the time of the day when practice, qualifying, and sprint
-                started and what date they occurred on. These colums does lack this data for a large majority of the races as previously mentioned and are therefore immedietly dropped from the dataset as those won't be used. The
-                time of day the race was held on was also dropped as this value was unsused for this project.
+            <p> As can be seen in the image it shows the entirety of 2009 with raceIds from 1-17, furthermore, it's apparent that a lot of the data is missing such as the time of the day when practice, qualifying, and sprint
+                started and what date they occurred on. These columns do lack this data for a large majority of the races as previously mentioned and are therefore immediately dropped from the dataset as those won't be used. The
+               time of day the race was held was also dropped as this value was unused for this project.
             </p>
             <p> With the base dataset slimmed down, additional columns with more usable values could be added. It was decided that the most interesting data would be the order of the qualification and the race result
                 for both the drivers and constructors. To achive this both <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/qualifying.csv">qualifying.csv</a> and
@@ -156,40 +156,40 @@ ul{
             <p> Given that these four new columns only contained numerical vectors it was decided that they could be used to generate two cosine similarities between the qualification order and the race result which could represent how 
                 exciting a race was. The argument for this was that if a lot of changes happened during the grand prix the vectors would be less similar and thus contribute to a lower value for cosine similarity. With that the vectors in <i>driverQuali</i>
                 and <i>constructorsQuali</i> was compared to the vectors in  <i>driversPosition</i> and <i>constructorsPosition</i> respectively for each grand prix ever held. This gave the values <i>driverCosim</i> and <i>constrCosim</i> which could be
-                added into two new separate columns in the base dataset. One important thing to note here is that there were some instances where a driver was injured during qualifying and thus couldn't partake in the race thus not beign present in the 
-                result vector. In these few cases those drivers where simply exluded from the qualifying vector to make sure that both vectors were the same length when the cosine similarity was calculated.
+                added into two new separate columns in the base dataset. One important thing to note here is that there were some instances where a driver was injured during qualifying and thus couldn't partake in the race thus not being present in the
+                result vector. In these few cases, those drivers were simply excluded from the qualifying vector to make sure that both vectors were the same length when the cosine similarity was calculated.
             </p>
             <div class="twoCol">
-                <p> To have additional weights when predicting races for the users it was decided that an interesting factor could be how far each individual driver climed or fell in the order during the race. This value was stored as a tuple with the drivers 
+                <p> To have additional weights when predicting races for the users it was decided that an interesting factor could be how far each driver climbed or fell in the order during the race. This value was stored as a tuple with the drivers
                     <i>driverId</i> (which is a unique value from <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a>) along with how many positions they gained or lost. All tuples for
                     a grand prix was saved to a vector and added to an additional column in the base dataset and with that the preprocessing was completed.
                     <br/>
                     <br/>
-                    In the image on the right hand side the data for the 2003 Italian Grand Prix can be seen. As is shown, the driver with <i>driverId</i> 30 took pole position and the win with the constructor with <i>constructorId</i> 6, which according to the 
+                    In the image on the right-hand side, the data for the 2003 Italian Grand Prix can be seen. As is shown, the driver with <i>driverId</i> 30 took pole position and the win with the constructor with <i>constructorId</i> 6, which according to the 
                     files <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a> and <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>
-                    is the classic line up of Michael Schumacher driving for Ferrari. Along with this it can be seen in the column <i>PodiumClimb</i> that he indeed neither gained or lost positions when comparing his qualification to race result (it should also be noted
-                    that this column does include all drivers and not only the podium finisher, the name is a left over from when the column only contained those three drivers). Lastly it can be seen that, given their closeness to 1, the driver and constructor cosine 
+                    is the classic lineup of Michael Schumacher driving for Ferrari. Along with this, it can be seen in the column <i>PodiumClimb</i> that he indeed neither gained nor lost positions when comparing his qualification to race result (it should also be noted
+                    that this column does include all drivers and not only the podium finisher, the name is a leftover from when the column only contained those three drivers). Lastly, it can be seen that, given their closeness to 1, the driver and constructor cosine 
                     similarities indicate that this might not have been the most eventful race to watch.
                 </p>
                 <p><img src="images/2003ITAGP.png" alt="2003 Italian GP" width="412px"></p>
             </div>
             <h2>Training & Test data</h2>
-            <p> Even though this system doesn't split up the data set in specific training and test data it could be argued that the base data set is a training set and the user profiles is a test dataset. This definition is for the KNN method given that this is a supervised learning method.
+            <p> Even though this system doesn't split up the data set into specific training and test data it could be argued that the base data set is a training set and the user profiles are a test dataset. This definition is for the KNN method given that this is a supervised learning method.
             </p>
         </div>
     </div>
     <div id="content" style="background: linear-gradient(-135deg,#5c2929 40px,#fff 0);">
         <div class="post">
             <h2>Users</h2>
-            <p> As mentioned in the background section, the recommended races is based on the users preferences. Each user is defined as a profile containing their favorite driver, constructor, circuit, and grand prix. In the current implementation the diffrent user
+            <p> As mentioned in the background section, the recommended races are based on the users' preferences. Each user is defined as a profile containing their favourite driver, constructor, circuit, and grand prix. In the current implementation, the different user
                 profiles are hard coded and can only be changed by going through the code. Preferably this would be improved so that the user can enter these parameters through the console or in an interface.
                 <br/>
                 <br/>
-                The profiles only take the name of the drivers, constructors, and circuits while the favorite grand prix parameter takes both the year and the name of the grand prix. The inital parameters of the user profiles are then used to create expanded profiles with relevant information from the entire dataset. Firstly the 
+                The profiles only take the name of the drivers, constructors, and circuits while the favourite grand prix parameter takes both the year and the name of the grand prix. The initial parameters of the user profiles are then used to create expanded profiles with relevant information from the entire dataset. Firstly the 
                 name of the driver is used to search the <i>forename</i> and <i>surname</i> columns in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/drivers.csv">drivers.csv</a>, when the specific driver is found, their
-                <i>driverId</i> and date of birth is saved. The favorite constructor, circuit, and grand prix is also searched for in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>,
+                <i>driverId</i> and date of birth is saved. The favourite constructor, circuit, and grand prix are also searched for in <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/constructors.csv">constructors.csv</a>,
                 <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/circuits.csv">circuits.csv</a>, and <a href="https://github.com/PhilipRobertsson/TNM108-Project-F1-Recommender/blob/main/F1Data/races.csv">races.csv</a>
-                respectivley. The most important part of these searches is to find the diffrent IDs but the countries for both the constructors and circuits are also saved. In the figure below the comparison between an input profile and it's expanded counterpart is visualized.
+                respectively. The most important part of these searches is to find the different IDs but the countries for both the constructors and circuits are also saved. In the figure below the comparison between an input profile and its expanded counterpart is visualized.
             </p>
             <p style="justify-self: center;"><img src="images/profileComparison.png" alt="profileComparison" width="512px"></p>
         </div>
@@ -198,12 +198,12 @@ ul{
         <div class="post">
             <h2>Predictions</h2>
             <div class="twoCol">
-                <p> Two diffrent types of prediction methods were used for this system, them being two euclidian distance implementations and a KNN implementation as mentioned in the background. These will be explained in the following sections, but it's first important to note which set of user profiles will be
-                    used. 
+                <p> Two different types of prediction methods were used for this system, them being two Euclidian distance implementations and a KNN implementation as mentioned in the background. These will be explained in the following sections, but it's first important to note which set of user profiles will be
+                    used.
                     <br/>
                     <br/>
-                    In the image on the right hand side the imaginary group of users has defined their profiles as shown. From the selection of drivers and races it could speculated that this might be a group of friends that are rather new to watching the sport and thus this system
-                    could work wonders to find them a race to watch together as mentioned in the background section. Given the more recent favorite races and only containing drivers which where still on the grid as of the 2024 season this should skew the prediction results towards the
+                    In the image on the right-hand side, the imaginary group of users has defined their profiles as shown. From the selection of drivers and races, it could speculated that this might be a group of friends that are rather new to watching the sport and thus this system
+                    could work wonders to find them a race to watch together as mentioned in the background section. Given the more recent favourite races and only containing drivers who were still on the grid as of the 2024 season, this should skew the prediction results towards the
                     modern era of the sport.
                </p>
                <p><img src="images/userProfiles.png" alt="UserProfiles" width="312px"></p>
@@ -211,58 +211,59 @@ ul{
 
             <h2>Implementation 1 - Euclidian distance</h2>
             <div class="twoCol">
-                <p> As previously mentioned there are two diffrent implementations of the euclidian distance prediction, these being unweighted and weighted predictions. Both implementations relies on transforming the data into a two dimmensional representation, which is done by introducing
-                     the cosine similarity values which have been calculated for each grand prix. In this case the cosine similarities for the constructors and drivers are mapped to the x- and y-axes respectivley, thus giving each race it's own coordinate on a two dimmensional plane. A scatter plot of
-                     this representation can be seen on the right hand side.
+                <p> As previously mentioned there are two different implementations of the Euclidian distance prediction, these being unweighted and weighted predictions. Both implementations rely on transforming the data into a two-dimensional representation, which is done by introducing
+                    the cosine similarity values which have been calculated for each grand prix. In this case, the cosine similarities for the constructors and drivers are mapped to the x- and y-axes respectively, thus giving each race its coordinate on a two-dimensional plane. A scatter plot of
+                    this representation can be seen on the right-hand side.
                 </p>
                 <p><img src="images/driverconstPlot.png" alt="races scatter plot" width="398px"></p>
             </div>
             <div class="twoCol">
                 <p><img src="images/unweightedResult.png" alt="unweighted Result" width="312px"></p>
-                <p style="margin-left: 10px;"> The first implementation with an unweighted euclidian distance is rather simple as it only meassures the distance between each race and the users favorite races. This is done by selecting a race from the base dataset and meassuring how close it lies to all the favorite races in the user
-                    profiles. The combined distances meassured are then summed and the mean value is saved to the column <i>TotalDistance</i> in the base dataset. After all races have been evaluated for the given set of user profiles the base dataset is sorted according to the <i>TotalDistance</i> column
-                    and the resulting prediction for the user profiles listed in the start of this chapter can be seen in the image on the left hand side.
+                <p style="margin-left: 10px;"> The first implementation with an unweighted Euclidian distance is rather simple as it only measures the distance between each race and the users' favourite races. This is done by selecting a race from the base dataset and measuring how close it lies to all the favourite races in the user
+                    profiles. The combined distances measured are then summed and the mean value is saved to the column <i>TotalDistance</i> in the base dataset. After all races have been evaluated for the given set of user profiles the base dataset is sorted according to the <i>TotalDistance</i> column
+                    and the resulting prediction for the user profiles listed at the start of this chapter can be seen in the image on the left hand side.
                 </p>
             </div>
-            <p> As can be seen in the image the best prediction according to this implementation is the <i><a href="https://en.wikipedia.org/wiki/2022_Belgian_Grand_Prix">Belgian Grand Prix 2022</a></i>, which also happen to be one of the profiles favorite grand prix so thier contributing distance would thus be 0. The other users 
-                favorite races should of course also be analysed to make sure that this implementation works as expected. The coordinates of all users favorite races can be seen in the image below.
+            <p> As can be seen in the image the best prediction according to this implementation is the <i><a href="https://en.wikipedia.org/wiki/2022_Belgian_Grand_Prix">Belgian Grand Prix 2022</a></i>, which also happen to be one of the profiles favourite grand prix so their contributing distance would thus be 0. The other users'
+                favourite races should of course also be analysed to make sure that this implementation works as expected. The coordinates of all users' favourite races can be seen in the image below.
+
             </p>
             <p style="justify-self: center;"><img src="images/favoriteRaces.png" alt="favorite races" width="512px"></p>
-            <p> It can be seen in the image that the cosine similarity values for the driver order is very similar only having distances less than 0.1 to the recommended race. The cosine similarity for constructors are however a bit more spread out at a maximum distance of 0.3 to the recommended race. This values are however still
-                very small and thus it's resonable to say that the mean distance, <i>0.149917</i> to the recommended race is a good prediction to satisfy all users based only on their favorite races.
+            <p> It can be seen in the image that the cosine similarity values for the driver order are very similar only having distances less than 0.1 to the recommended race. The cosine similarity for constructors is however a bit more spread out at a maximum distance of 0.3 to the recommended race. These values are however still
+                very small and thus it's reasonable to say that the mean distance, <i>0.149917</i> to the recommended race is a good prediction to satisfy all users based only on their favourite races.
             </p>
             <h4 style="margin-bottom: 0;">Euclidian distance with weights</h4>
             <div class="twoCol">
-                <p style="margin-top: 0;"> This implementation can however be expanded to accomendate for more of the parameters in the user profiles and thus make more accurate predictions. To accomplish this there are weights introduced to the <i>TotalDistance</i> column as mentioned in the begining of this section. The two dimmensional distance meassurments
-                    remain the same in this implementation but a third axis is introduced which is used to apply weights based on the results of the profiles favorite drivers. The weight is dependant on how well a given driver did in a race which they partook in, meaning that drivers that finished high in the order are judged to have driven a better
-                    race. With the given user profiles in this example the resulting recommendations can be seen in the image on the right hand side.
+                <p style="margin-top: 0;"> This implementation can however be expanded to accommodate more of the parameters in the user profiles and thus make more accurate predictions. To accomplish this there are weights introduced to the <i>TotalDistance</i> column as mentioned at the beginning of this section. The two-dimensional distance measurements
+                    remain the same in this implementation but a third axis is introduced which is used to apply weights based on the results of the profiles' favourite drivers. The weight is dependent on how well a given driver did in a race in which they partook, meaning that drivers that finished high in the order are judged to have driven a better
+                    race. With the given user profiles in this example, the resulting recommendations can be seen in the image on the right-hand side.
                 </p>
                 <p style="margin-left: 10px;"><img src="images/weightedResults.png" alt="weighted Results" width="312px"></p>
             </div>
-            <p> This predicton instead suggests that the imaginary group of friends should watch the <i><a href="https://en.wikipedia.org/wiki/2020_Portuguese_Grand_Prix">Portuguese Grand Prix 2020</a></i> which is very suitable as all the favorite drivers partook in this event and the entire podium is occupied by favorite drivers aswell.
-                Futhermore, it also had simmilar cosine similarities to those of the favorite races, these beign <i>0.7747</i> for the drivers and <i>0.3519</i> for the constructors and thus this also contributed to the recommendation of this grand prix.
+            <p> This prediction instead suggests that the imaginary group of friends should watch the <i><a href="https://en.wikipedia.org/wiki/2020_Portuguese_Grand_Prix">Portuguese Grand Prix 2020</a></i> which is very suitable as all the favourite drivers partook in this event and the entire podium is occupied by favourite drivers as well.
+                Furthermore, it also had similar cosine similarities to those of the favourite races, these being <i>0.7747</i> for the drivers and <i>0.3519</i> for the constructors and thus this also contributed to the recommendation of this grand prix.
             </p>
             <h2>Implementation 2 - KNN</h2>
-            <p> The second method used in this system is a KNN based prediction. This implementation relies on the races beign classed to a specific value or classifier, which in this case was chosen to be how <i>intense</i> a given grand prix was. This intensity classifier is on the scale of 0-3 where the most exsiting races would gain the class 3
-                while the least exiting races would gain the class 0. The races are evaluated in a simmilar way as the weighted euclidian distance evaluation where the races that the favorite drivers performed better in gets a higher weight. The weight is summed for all favorite drivers so that races where they partake and do well in will get a higher
-                weight. Each race gets it's own weight and this is the value which decides how exiting or intense a grand prix was.
+            <p> The second method used in this system is a KNN-based prediction. This implementation relies on the races being classed to a specific value or classifier, which in this case was chosen to be how <i>intense</i> a given grand prix was. This intensity classifier is on a scale of 0-3 where the most exciting races would gain the class 3
+                while the least exciting races would gain the class 0. The races are evaluated similarly to the weighted Euclidian distance evaluation where the races that the favorite drivers performed better in get a higher weight. The weight is summed for all favourite drivers so that races, where they partake and do well, will get a higher
+                weight. Each race gets its weight and this is the value which decides how exciting or intense a grand prix is.
             </p>
             <p> Races where the weight remained 0 (for example if none of the drivers participated) are classed as zero and thus not exciting at all, races with a weight less than 10 are classed as one, races with a weight more than 10 but less than 30 are classed as two, while the most exciting races with the class three are those with a weight larger or equal to 30.
-                Thus there are four diffrent groups which a grand prix can be assigned to.
+                Thus there are four different groups to which a grand prix can be assigned.
             </p>
             <div class="twoCol">
                 <p style="margin-left: 10px;"><img src="images/KNNplot.png" alt="KNN plot" width="312px"></p>
-                <p> With all races now having consine similarites as coordinates and diffrent classes, it's possible to introduce a new point which will get it's position based on the user profiles favorite races avrage cosine similarites. The class of the new point will be predicted based on the classes of it's
-                    five nearest neighbours. The result of adding a new point can be seen in the image on the left hand side. As can be seen in the image the new point based on the group of users get the excitment class of two.
+                <p> With all races now having cosine similarities as coordinates and different classes, it's possible to introduce a new point which will get its position based on the user profiles' favourite races' average cosine similarities. The class of the new point will be predicted based on the classes of its
+                    five nearest neighbours. The result of adding a new point can be seen in the image on the left-hand side. As can be seen in the image the new point based on the group of users gets the excitement class of two.
                 </p>
             </div>
             <div class="twoCol">
-                <p> Lastly there needs to be a way to messure the closes races to the avrage favorite race from the user profiles. This is done in the same way as the weighted euclidian distance but only accounting for the races in the same class as the prediction, i.e in this case only races with the excitment 
-                    class two. The five best predicitons from this implementation can be seen in the image on the right hand side.
+                <p> Lastly there needs to be a way to measure the closest races to the average favourite race from the user profiles. This is done in the same way as the weighted Euclidean distance but only accounting for the races in the same class as the prediction, i.e. in this case only races with the excitement
+                    class two. The five best predictions from this implementation can be seen in the image on the right-hand side.
                     <br/>
                     <br/>
-                    As shown, the recommend race here is the <i><a href="https://en.wikipedia.org/wiki/2021_Styrian_Grand_Prix">Styrian Grand Prix 2021</a></i>, were three of the favourite drivers qualified in the top three and also ended there, one of the favorites did lose a single position but another gained six positions. Given that this race had the same exitement class
-                    as the predicted class of the users favourite race avrage and that a majoirty of their favourite drivers drove really well it seems like this is a good prediction.
+                    As shown, the recommend race here is the <i><a href="https://en.wikipedia.org/wiki/2021_Styrian_Grand_Prix">Styrian Grand Prix 2021</a></i>, where three of the favourite drivers qualified in the top three and also ended there, one of the favourites did lose a single position but another gained six positions. Given that this race had the same excitement class
+                    as the predicted class of the users' favourite race average and that a majority of their favourite drivers drove well it seems like this is a good prediction.
                 </p>
                 <p style="margin-left: 10px;"><img src="images/KNNresults.png" alt="KNN Results" width="312px"></p>
             </div>
@@ -271,12 +272,12 @@ ul{
     <div id="content" style="background: linear-gradient(-135deg,#422d2d 40px,#fff 0);">
         <div class="post">
             <h2>Discussion</h2>
-            <p> All the diffrent predictions differ a lot given the result images in the previous chapter which could be usable when analysing how well the models perform. Only the <i>Hungarian Grand Prix 2022</i> is repeated which is fair given that the repetition happens in the two euclidian distance versions. It is of course important to note that there is no concrete answer if these predictions are good or bad given
-                that diffrent people enjoy races for diffrent reasons so more testing would be needed with a real group of participants. The caveat here being that each race is about two hours long so going through each and every prediction for a large set of diffrent groups would be rather time consuming, but it would help to fine tune the models to give more accurate predictions.
+            <p> All the different predictions differ a lot given the result images in the previous chapter which could be usable when analysing how well the models perform. Only the <i>Hungarian Grand Prix 2022</i> is repeated which is fair given that the repetition happens in the two Euclidean distance versions. It is of course important to note that there is no concrete answer if these predictions are good or bad given
+                that different people enjoy races for different reasons so more testing would be needed with a real group of participants. The caveat here is that each race is about two hours long so going through each and every prediction for a large set of different groups would be rather time-consuming, but it would help to fine-tune the models to give more accurate predictions.
             </p>
-            <p> There are some improvements which could contribute to better predictions by the system, for example, given that all the races have an associated Wikipedia link it would be possible to extract the written race reports for each race. These documents could then be vectorised to allow for <i>TF-IDF</i> meassurments which could further improve how races are classed and compared to one another.
-                An additional way the prediction could be improved is to utililise more of the data such as, lap times and the pitstop time to futher meassure how exciting a race was. Futher accuracy could also be achieved by using all user profile parameters in the weighted methods, the favourite constructor is easy to accomendate given that it works simmilarly to the favourite driver parameter. It would be harder
-                to utilise the favourite circuit parameter but an easy solution would be to giving the weight a flat bonus if the race was held at that circuit. Lastly the user profiles could also require futher data to get a better image of the users before the predictions.
+            <p> There are some improvements which could contribute to better predictions by the system, for example, given that all the races have an associated Wikipedia link it would be possible to extract the written race reports for each race. These documents could then be vectorised to allow for <i>TF-IDF</i> measurements which could further improve how races are classed and compared to one another.
+                An additional way the prediction could be improved is to utilise more of the data such as lap times and the pitstop time to further measure how exciting a race was. Further accuracy could also be achieved by using all user profile parameters in the weighted methods, the favourite constructor is easy to accommodate given that it works similarly to the favourite driver parameter. It would be harder
+                to utilise the favourite circuit parameter but an easy solution would be to give the weight a flat bonus if the race was held at that circuit. Lastly, the user profiles could also require further data to get a better image of the users before the predictions.
             </p>
         </div>
     </div>
