@@ -290,12 +290,17 @@ ul{
     <div id="content" style="background: linear-gradient(-135deg,#422d2d 40px,#fff 0);">
         <div class="post">
             <h2>Discussion</h2>
-            <p> All the different predictions differ a lot given the result images in the previous chapter which could be usable when analysing how well the models perform. Only the <i>Hungarian Grand Prix 2022</i> is repeated which is fair given that the repetition happens in the two Euclidean distance versions. It is of course important to note that there is no concrete answer if these predictions are good or bad given
-                that different people enjoy races for different reasons so more testing would be needed with a real group of participants. The caveat here is that each race is about two hours long so going through each and every prediction for a large set of different groups would be rather time-consuming, but it would help to fine-tune the models to give more accurate predictions.
-            </p>
-            <p> There are some improvements which could contribute to better predictions by the system, for example, given that all the races have an associated Wikipedia link it would be possible to extract the written race reports for each race. These documents could then be vectorised to allow for <i>TF-IDF</i> measurements which could further improve how races are classed and compared to one another.
-                An additional way the prediction could be improved is to utilise more of the data such as lap times and the pitstop time to further measure how exciting a race was. Further accuracy could also be achieved by using all user profile parameters in the weighted methods, the favourite constructor is easy to accommodate given that it works similarly to the favourite driver parameter. It would be harder
+            <h4>How effective are user profiles in predicting and recommending suitable races for individuals?</h4>
+            <p> The implementation of user profiles was an effective way to get varied race recommendations as seen in the <i>Predictions</i> chapter even though some parameters were unused. Better accuracy could be achieved by using all user profile parameters in the weighted methods, the favourite constructor is easy to accommodate given that it works similarly to the favourite driver parameter. It would be harder
                 to utilise the favourite circuit parameter but an easy solution would be to give the weight a flat bonus if the race was held at that circuit. Lastly, the user profiles could also require further data to get a better image of the users before the predictions.
+            </p>
+            <h4>What metrics or methods can be used to assess the quality of race recommendations despite the subjective nature of enjoyment?</h4>
+            <p> All the different predictions differ a lot given the result images in the previous chapter which could be usable when analysing how well the models perform. Only the <i>Hungarian Grand Prix 2022</i> is repeated which is fair given that the repetition happens in the two Euclidean distance versions. It is of course important to note that there is no concrete answer if these predictions are good or bad given
+                that different people enjoy races for different reasons so more testing would be needed with a real group of participants. The caveat here is that each race is about two hours long so going through each and every prediction for a large set of different groups would be rather time-consuming, but it would help to fine-tune the models to give more accurate predictions. 
+            </p>
+            <h4>Improvements</h4>
+            <p> There are some improvements which could contribute to better predictions by the system, for example, given that all the races have an associated Wikipedia link it would be possible to extract the written race reports for each race. These documents could then be vectorised to allow for <i>TF-IDF</i> measurements which could further improve how races are classed and compared to one another.
+                An additional way the prediction could be improved is to utilise more of the data such as lap times and the pitstop time to further measure how exciting a race was.
             </p>
         </div>
     </div>
